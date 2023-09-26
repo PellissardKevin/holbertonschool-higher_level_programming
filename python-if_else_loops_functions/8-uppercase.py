@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 def uppercase(str):
     result = 0
-    for i in range(len(str)):
-        if str[i] >= 'a' and str[i] <= 'z':
-            result = ord(str[i]) - 32
+    for i in str:
+        if ord(i) >= 97 and ord(i) <= 122:
+            result = ord(i) - 32
         else:
-            result = ord(str[i])
+            result = ord(i)
         print(chr(result), end="")
-
     print("")
