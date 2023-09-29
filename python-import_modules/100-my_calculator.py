@@ -4,7 +4,7 @@ from sys import argv, exit
 
 if __name__ == "__main__":
     if len(argv) != 4:
-        print("Unknown operator. Available operators: +, -, * and /")
+        print("./100-my_calculator.py <a> <operator> <b>")
         exit(1)
 
     if argv[2] != '+' and argv[2] != '-' and argv[2] != '*' and argv[2] != '/':
