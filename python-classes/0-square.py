@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 class Square:
-    Square = None
+    def __init__(self):
+        Square = None
