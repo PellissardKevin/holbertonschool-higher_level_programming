@@ -9,29 +9,39 @@
 >>> add( , 5)
 Traceback (most recent call last):
 ...
-typeError: a must be an integer
+TypeError: a must be an integer
 
 >>> add(10, )
 Traceback (most recent call last):
 ...
-typeError: b must be an integer
+TypeError: b must be an integer
 
 >>> add('H', 5)
 Traceback (most recent call last):
 ...
-typeError: a must be an integer
+TypeError: a must be an integer
 
 >>> add(10, 'A')
 Traceback (most recent call last):
 ...
-typeError: b must be an integer
+TypeError: b must be an integer
 
 >>> add(5.0, 5)
 Traceback (most recent call last):
 ...
-typeError: a must be an integer
+TypeError: a must be an integer
 
 >>> add(10, 1.25)
 Traceback (most recent call last):
 ...
-typeError: b must be an integer
+TypeError: b must be an integer
+
+>>> add(None, 5)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+>>> add(10, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
