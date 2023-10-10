@@ -13,7 +13,4 @@ def print_square(size):
     if type(size) is float and size < 0:
         raise TypeError("size must be an integer")
 
-    for i in range(size):
-        for j in range(size):
-            print("#", end="")
-        print()
+    print("{}".format(("#" * size + "\n") * size), end="")
