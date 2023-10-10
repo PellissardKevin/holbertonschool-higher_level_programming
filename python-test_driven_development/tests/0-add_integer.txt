@@ -1,12 +1,12 @@
 >>> add_integer = __import__("0-add_integer").add_integer
 
->>> add(5, 10)
+>>> add_integer(5, 10)
 5
 
->>> add(2)
+>>> add_integer(2)
 100
 
->>> add(10, 1.25)
+>>> add_integer(10, 1.25)
 11
 
 >>> add_integer("abc")
