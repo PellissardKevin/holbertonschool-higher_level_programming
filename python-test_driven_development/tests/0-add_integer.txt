@@ -3,41 +3,39 @@
 >>> add(5, 10)
 5
 
->>> add(1000, 50)
-1050
-
->>> add(5.0, 5)
-10
+>>> add(2)
+100
 
 >>> add(10, 1.25)
 11
 
->>> add({}, 5)
+>>> add_integer("abc")
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> add(10,{})
+>>> add_integer(2, {})
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
 
->>> add('H', 5)
+>>> add_integer([], 10)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> add(10, 'A')
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+>>> add_integer(-999999999.116)
+-999999901
 
->>> add(None, 5)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+>>> add_integer(0, -999999999.116)
+-999999999
 
->>> add(10, None)
+>>> add_integer(-3, float("Inf"))
 Traceback (most recent call last):
 ...
-TypeError: b must be an integer
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(-3, float("NaN"))
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
