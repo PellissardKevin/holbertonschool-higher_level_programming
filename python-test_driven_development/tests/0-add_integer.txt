@@ -1,0 +1,37 @@
+>>> add_integer = __import__("0-add_integer").add_integer
+
+>>> add(5, 10)
+5
+
+>>> add(1000, 50)
+1050
+
+>>> add( , 5)
+Traceback (most recent call last):
+...
+typeError: a must be an integer
+
+>>> add(10, )
+Traceback (most recent call last):
+...
+typeError: b must be an integer
+
+>>> add('H', 5)
+Traceback (most recent call last):
+...
+typeError: a must be an integer
+
+>>> add(10, 'A')
+Traceback (most recent call last):
+...
+typeError: b must be an integer
+
+>>> add(5.0, 5)
+Traceback (most recent call last):
+...
+typeError: a must be an integer
+
+>>> add(10, 1.25)
+Traceback (most recent call last):
+...
+typeError: b must be an integer
