@@ -11,13 +11,13 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    row_len = None
+    row_length = None
     for row in matrix:
         if not type(row) is list or len(row) == 0:
             raise TypeError(invalid_mat)
-        if row_len is not None and row_len != len(row):
+        if row_length is not None and row_length != len(row):
             raise TypeError("Each row of the matrix must have the same size")
-        row_len = len(row)
+        row_length = len(row)
         for col in row:
             if not type(col) is int and not type(col) is float:
                 raise TypeError(invalid_mat)
