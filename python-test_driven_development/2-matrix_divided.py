@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """divides all elements of a matrix"""
 
+
 def matrix_divided(matrix, div):
     """Divides all elements of a matrix."""
     invalid_mat = "matrix must be a matrix (list of lists) of integers/floats"
