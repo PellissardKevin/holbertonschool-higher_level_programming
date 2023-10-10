@@ -7,17 +7,17 @@
 1050
 
 >>> add(5.0, 5)
-10.0
+10
 
 >>> add(10, 1.25)
-11.25
+11
 
->>> add( , 5)
+>>> add({}, 5)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> add(10, )
+>>> add(10,{})
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
