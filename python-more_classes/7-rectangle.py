@@ -5,6 +5,9 @@
 class Rectangle:
     """definition of 'Rectangle'"""
 
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         if not type(width) is int:
             raise TypeError("width must be an integer")
@@ -16,6 +19,7 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         self.__height = height
         self.__width = width
+        self.__class__.number_of_instances += 1
 
     @property
     def height(self):
@@ -53,8 +57,13 @@ class Rectangle:
         string = ""
         if self.__width == 0 or self.__height == 0:
             return string
-        string += "{}".format("\n".join(["#" * self.__width] * self.__height))
+        string += "{}".format("\n".join(
+            [str(self.print_symbol) * self.__width] * self.__height))
         return string
 
     def __repr__(self):
         return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        print("Bye rectangle...")
+        self.__class__.number_of_instances -= 1
