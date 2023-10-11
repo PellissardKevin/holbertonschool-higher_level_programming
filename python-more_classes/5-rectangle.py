@@ -49,13 +49,6 @@ class Rectangle:
             return 0
         return self.__height * 2 + self.__width * 2
 
-    def my_print(self):
-        """Prints a square with '#'"""
-        if self.__width == 0 or self.__height == 0:
-            print()
-            return
-        print("{}".format("\n".join(["#" * self.__width] * self.__height)))
-
     def __str__(self):
         string = ""
         if self.__width == 0 or self.__height == 0:
