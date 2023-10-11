@@ -36,7 +36,6 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         self.__height = value
 
-
     @width.setter
     def width(self, value):
         if not type(value) is int:
@@ -66,5 +65,3 @@ class Rectangle:
     def __del__(self):
         print("Bye rectangle...")
         self.__class__.number_of_instances -= 1
-
-
