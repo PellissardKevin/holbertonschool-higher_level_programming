@@ -5,11 +5,13 @@
 class Rectangle:
     """definition of 'Rectangle'"""
     def __init__(self, width=0, height=0):
-        if not (type(width) is int and type(height) is int):
+        if not type(width) is int:
             raise TypeError("width must be an integer")
+        elif not type(height) is int:
+            raise TypeError("height must be an integer")
         if int(width) < 0:
             raise ValueError("width must be >= 0")
-        elif int(height) < 0:
+        if int(height) < 0:
             raise ValueError("height must be >= 0")
         self.__height = height
         self.__width = width
