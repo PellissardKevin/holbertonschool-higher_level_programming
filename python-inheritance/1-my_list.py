@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""Definition of function my_list"""
+
+
 class MyList(list):
     """Class Mylist with list in inherit"""
 
