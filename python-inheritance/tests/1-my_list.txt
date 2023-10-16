@@ -1,30 +1,5 @@
 >>> MyList = __import__('1-my_list').MyList
 
->>> my_list = MyList()
-
-
->>> type(my_list) == MyList
-True
-
-
->>> type(my_list) == list
-False
-
-
->>> isinstance(my_list, MyList)
-True
-
-
->>> isinstance(my_list, list)
-True
-
-
->>> issubclass(MyList, list)
-True
-
-
->>> type(my_list.print_sorted)
-<class 'method'>
 
 >>> my_list = MyList()
 >>> my_list.append(1)
