@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""script for adding item in json list"""
+
+
 from sys import argv
 import json
 
