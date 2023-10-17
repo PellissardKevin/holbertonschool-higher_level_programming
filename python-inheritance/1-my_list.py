@@ -7,5 +7,7 @@ class MyList(list):
 
     def print_sorted(self):
         """"Function that prints the list, but sorted """
-        if type(list) is int:
-            print(sorted(self))
+        for item in self:
+            if not isinstance(item, int):
+                raise TypeError("not all elements in list are integer")
+        print(sorted(self))
