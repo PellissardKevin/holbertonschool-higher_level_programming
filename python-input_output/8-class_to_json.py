@@ -3,7 +3,7 @@
 
 
 def class_to_json(obj):
-    """ function that returns the dictionary
+    """function that returns the dictionary
     description"""
     dictionary = {}
     if hasattr(obj, "__dict__"):
