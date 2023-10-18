@@ -9,10 +9,10 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-    def to_json(obj):
+    def to_json(self):
         """ function that returns the dictionary description"""
         dictionary = {}
-        if hasattr(obj, "__dict__"):
-            dictionary = obj.__dict__.copy()
+        if hasattr(self, "__dict__"):
+            dictionary = self.__dict__.copy()
 
         return dictionary
