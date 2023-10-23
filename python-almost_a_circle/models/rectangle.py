@@ -87,8 +87,7 @@ class Rectangle(Base):
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.__x, self.__y, self.__width, self.__height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Definition update with variadic function"""
-        attributes = ["id", "width", "height", "x", "y"]
-        for i in range(len(args)):
-            setattr(self, attributes[i], args[i])
+        for key, value in kwargs.items():
+            setattr(self, key, value)
