@@ -13,14 +13,14 @@ class Square(Rectangle):
 
     @property
     def size(self):
-        return self.__width
+        return self.__size
 
     @size.setter
     def size(self, value):
         if not type(value) is int:
-            raise TypeError("size must be an integer")
+            raise TypeError("width must be an integer")
         if value <= 0:
-            raise ValueError("size must be > 0")
+            raise ValueError("width must be > 0")
         self.__width = value
         self.__height = value
 
