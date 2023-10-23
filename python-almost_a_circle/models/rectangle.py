@@ -86,8 +86,6 @@ class Rectangle(Base):
 
     def display(self):
         """Print with #"""
-        if self.__width == 0 or self.__height == 0:
-            return string
         print("{}".format("\n" * self.__y), end="")
         print("{}".format("\n".join([
                 " " * self.__x + "#" * self.__width] * self.__height)))
