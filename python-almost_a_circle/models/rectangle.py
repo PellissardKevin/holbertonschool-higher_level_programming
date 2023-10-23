@@ -7,7 +7,6 @@ from models.base import Base
 
 class Rectangle(Base):
     """ Class Rectangle inherit Base"""
-    print_symbol = "#"
 
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -90,8 +89,7 @@ class Rectangle(Base):
         if self.__width == 0 or self.__height == 0:
             return string
         print("{}".format(
-            "\n".join([
-                str(self.print_symbol) * self.__width] * self.__height)))
+            "\n".join(["#" * self.__width] * self.__height)))
 
     def __str__(self):
         """definition of str for print"""
