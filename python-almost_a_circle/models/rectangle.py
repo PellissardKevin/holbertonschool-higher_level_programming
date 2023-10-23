@@ -10,23 +10,15 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
-        if not type(width) is int:
-            raise TypeError("width must be an integer")
-        if int(width) <= 0:
-            raise ValueError("width must be > 0")
-        if not type(height) is int:
-            raise TypeError("height must be an integer")
-        if int(height) <= 0:
-            raise ValueError("height must be > 0")
-        if not type(x) is int:
-            raise TypeError("x must be an integer")
-        if x < 0:
-            raise ValueError("x must be >= 0")
-        if not type(y) is int:
-            raise TypeError("y must be an integer")
-        if y < 0:
-            raise ValueError("y must be >= 0")
-
+        attributes = ["width", "height", "x", "y"]
+        for attr in attributes:
+            value = locals()[attr]
+            if not isinstance(value, int):
+                raise TypeError(f"{attr} must be an integer")
+            elif (attr == "width" or attr == "height") and value <= 0:
+                raise ValueError(f"{attr} must be > 0")
+            elif (attr == "y" or attr == "x") and value < 0:
+                raise ValueError(f"{attr} must be >= 0")
         self.__width = width
         self.__height = height
         self.__x = x
@@ -94,3 +86,9 @@ class Rectangle(Base):
         """definition of str for print"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def update(self, *args):
+        """Definition update with variadic function"""
+        attributes = ["id", "width", "height", "x", "y"]
+        for i in range(len(args)):
+            setattr(self, attributes[i], args[i])
