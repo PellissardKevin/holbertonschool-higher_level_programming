@@ -30,7 +30,17 @@ class Square(Rectangle):
             self.id, self.__x, self.__y, self.__size)
 
     def update(self, *args, **kwargs):
-        """Definition update with variadic function"""
-        for key, value in kwargs.items():
-            setattr(self, key, value)
+        """Organice each element of args and check him order"""
+        attr_list = ["id", "size", "x", "y"]
+        if args is not None and len(args) > 0:
+            for i in range(len(args)):
+                setattr(self, attr_list[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                for i in attr_list:
+                    if i == key:
+                        setattr(self, i, value)
+                    if key == "size":
+                        setattr(self, "width", value)
+                        setattr(self, "heigth", value)
 
