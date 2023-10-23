@@ -21,9 +21,16 @@ class Square(Rectangle):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-        self.__size = value
+        self.__width = value
+        self.__height = value
 
     def __str__(self):
         """return a strings for print"""
         return "[Square] ({:d}) {:d}/{:d} - {:d}".format(
             self.id, self.__x, self.__y, self.__size)
+
+    def update(self, *args, **kwargs):
+        """Definition update with variadic function"""
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
