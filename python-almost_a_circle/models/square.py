@@ -21,8 +21,7 @@ class Square(Rectangle):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-        self.__width = value
-        self.__height = value
+        self.__size = value
 
     def __str__(self):
         """return a strings for print"""
@@ -30,17 +29,16 @@ class Square(Rectangle):
             self.id, self.__x, self.__y, self.__size)
 
     def update(self, *args, **kwargs):
-        """Organice each element of args and check him order"""
-        attr_list = ["id", "size", "x", "y"]
-        if args is not None and len(args) > 0:
-            for i in range(len(args)):
-                setattr(self, attr_list[i], args[i])
-        else:
-            for key, value in kwargs.items():
-                for i in attr_list:
-                    if i == key:
-                        setattr(self, i, value)
-                    if key == "size":
-                        setattr(self, "width", value)
-                        setattr(self, "heigth", value)
+        """ Updates the arguments in the class """
+        if len(args) == 0:
+            for key, val in kwargs.items():
+                self.__setattr__(key, val)
+            return
+        try:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        except IndexError:
+            pass
 
