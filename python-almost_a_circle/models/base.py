@@ -2,6 +2,7 @@
 """Create class Base"""
 import json
 
+
 class Base:
     """Class Base"""
     __nb_objects = 0
@@ -16,4 +17,6 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """returns JSON string"""
-        return json.dumps(list_dictionaries or [])
+        if list_dictionaries is None:
+            return '[]'
+        return json.dumps(list_dictionaries)
