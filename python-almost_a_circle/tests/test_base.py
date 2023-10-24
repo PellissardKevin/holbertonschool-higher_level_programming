@@ -50,17 +50,9 @@ class test_base(unittest.TestCase):
 
     def test_id(self):
         """ Test check for id """
-        Base._Base__nb_objects = 0
-        b1 = Base()
-        b2 = Base()
-        b3 = Base()
-        b4 = Base(12)
-        b5 = Base()
-        self.assertEqual(b1.id, 1)
-        self.assertEqual(b2.id, 2)
-        self.assertEqual(b3.id, 3)
-        self.assertEqual(b4.id, 12)
-        self.assertEqual(b5.id, 4)
+        self.assertEqual(self.bs1.id, 1)
+        self.assertEqual(self.bs2.id, 100)
+        self.assertEqual(self.bs3.id, 2)
 
     def test_rectangle(self):
         """ Test check for rectangle """
@@ -93,6 +85,67 @@ class test_base(unittest.TestCase):
         Square.save_to_file(lS)
         lS2 = Square.load_from_file()
         self.assertNotEqual(lS, lS2)
+
+    def test_from_json_string(self):
+        """Test check from json string"""
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        with self.subTest():
+            r1 = Rectangle(10, 7, 2, 8, 1)
+            r1_dict = r1.to_dictionary()
+            json_dict = Base.to_json_string([r1_dict])
+            self.assertEqual(r1_dict, {'x': 2, 'width': 10,
+                                       'id': 1, 'height': 7,
+                                       'y': 8})
+            self.assertIs(type(r1_dict), dict)
+            self.assertIs(type(json_dict), str)
+            self.assertEqual(json.loads(json_dict), json.loads('[{"x": 2, '
+                                                               '"width": 10, '
+                                                               '"id": 1, '
+                                                               '"height": 7, '
+                                                               '"y": 8}]'))
+
+
+    def test_int_type(self):
+        """raise correct type error"""
+        with self.assertRaises(TypeError):
+            self.rt2.__init__("str", "str")
+
+    def test_create(self):
+        """check if instance create and attr set"""
+        self.assertIsNotNone(self.sq2.__init__)
+        self.assertIsNotNone(self.rt2.__dict__)
+
+        attrs = ["width", "height", "x", "y", "id"]
+        for attr in attrs:
+            self.assertTrue(hasattr(self.rt2, attr))
+
+        rt_dict = self.rt3.to_dictionary()
+        rt_create = Rectangle.create(**rt_dict)
+        self.assertEqual(self.rt3.__str__(), '[Rectangle] (100) 3/3 - 30/30')
+
+    def test_load_file(self):
+        """check load file method"""
+        self.assertTrue(os.path.isfile('Rectangle.json'))
+        with open('Rectangle.json') as file:
+            for line in file:
+                self.assertEqual(type(line), str)
+
+        list_of_obj = [self.rt1, self.rt2, self.rt3]
+        for obj in list_of_obj:
+            self.assertIsInstance(obj, Rectangle)
+            self.assertIsInstance(obj, Base)
+
+        list_of_output = Rectangle.load_from_file()
+        for rect in list_of_output:
+            self.assertIsInstance(rect, Rectangle)
+
+        Rectangle.save_to_file(list_of_obj)
+        with open('Rectangle.json', mode='r') as file:
+            count = 0
+            for line in file:
+                count += 1
+            self.assertGreater(count, 0)
 
 if __name__ == '__main__':
     unittest.main()
