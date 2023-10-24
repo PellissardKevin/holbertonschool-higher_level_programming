@@ -1,3 +1,4 @@
 *main.py
 models/__pycache__
 *.json
+tests/test_models/__pycache__

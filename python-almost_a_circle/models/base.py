@@ -8,6 +8,7 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """Initialisation for instance of Base"""
         if id is not None:
             self.id = id
         else:
@@ -43,7 +44,6 @@ class Base:
             instance = cls(5, 5)
         else:
             instance = cls(5)
-
         instance.update(**dictionary)
         return instance
 
