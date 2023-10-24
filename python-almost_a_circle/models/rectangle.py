@@ -89,9 +89,16 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """Definition update with variadic function"""
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
+        if args:
+            i = 0
+            listme = ['id', 'width', 'height', 'x', 'y']
+            for arg in args:
+                setattr(self, listme[i], arg)
+                i += 1
+            return
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
     def to_dictionary(self):
         """return dict representation of Rectangle"""
         return {'x': self.x, 'y': self.y, 'id': self.id,
