@@ -3,8 +3,6 @@ from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
 import unittest, sys, json
-from unittest.mock import patch
-from io import StringIO
 import os
 """Create a class for testing base class"""
 

@@ -3,7 +3,7 @@ import unittest, json, sys
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-
+"""Create a class for testing rectangle class"""
 
 class TestRectangleClass(unittest.TestCase):
     """Test Rectangle Class"""
