@@ -2,7 +2,6 @@
 import unittest, os, sys, json
 from models.square import Square
 from io import StringIO
-
 """Runs test cases for the square module"""
 
 

@@ -2,7 +2,6 @@
 import unittest, os, json, sys
 from models.rectangle import Rectangle
 from io import StringIO
-
 """Runs test cases for the Rectangle module"""
 
 

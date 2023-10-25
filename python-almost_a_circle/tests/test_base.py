@@ -3,7 +3,6 @@ import unittest, json
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-
 """Creating test cases for the base module"""
 
 
@@ -80,5 +79,5 @@ class test_base(unittest.TestCase):
         json_string = Base.to_json_string([])
         self.assertEqual(json_string, "[]")
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
