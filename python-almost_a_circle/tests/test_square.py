@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-import unittest
+import unittest, os, sys, json
 from models.square import Square
-import os
-import sys
-import json
 from io import StringIO
-"""Runs test cases for the square module"""
 
+"""Runs test cases for the square module"""
 
 
 class test_square(unittest.TestCase):
@@ -14,7 +11,7 @@ class test_square(unittest.TestCase):
 
     def setUp(self):
         """Initializing instance with width and height
-            parameters"""
+        parameters"""
         self.s = Square(5)
 
     def tearDown(self):
@@ -147,7 +144,6 @@ class test_square(unittest.TestCase):
 
     def test_update_width(self):
         """Testing the update method"""
-
         self.s.update(54, 30)
         self.assertEqual(30, self.s.width)
 
@@ -197,8 +193,7 @@ class test_square(unittest.TestCase):
         """Testing the dict that will be printed"""
         r1 = Square(5, 0, 0, 410)
         r1_dict = r1.to_dictionary()
-        self.assertEqual(r1_dict,
-                         {'size': 5, 'id': 410, 'x': 0, 'y': 0})
+        self.assertEqual(r1_dict, {"size": 5, "id": 410, "x": 0, "y": 0})
 
     def test_missing_height(self):
         """Expecting a type error because height and width are missing"""
@@ -213,7 +208,6 @@ class test_square(unittest.TestCase):
             pass
         r1 = Square(5, 0, 0, 346)
         Square.save_to_file([r1])
-
         with open("Square.json", "r") as file:
             content = file.read()
         t = [{"id": 346, "x": 0, "size": 5, "y": 0}]
@@ -246,10 +240,8 @@ class test_square(unittest.TestCase):
             pass
         r1 = Square(5, 0, 0, 346)
         Square.save_to_file([r1])
-
         with open("Square.json", "r") as file:
             content = file.read()
-
         self.assertEqual(str, type(content))
         try:
             os.remove("Square.json")
@@ -258,22 +250,18 @@ class test_square(unittest.TestCase):
 
     def test_json_string_type(self):
         """Testing the returned type"""
-        list_input = [
-            {'id': 2089, 'size': 10},
-            {'id': 2712, 'size': 1}]
+        list_input = [{"id": 2089, "size": 10}, {"id": 2712, "size": 1}]
         json_list_input = Square.to_json_string(list_input)
         list_output = Square.from_json_string(json_list_input)
         self.assertEqual(type(list_input), list)
 
     def test_json_string(self):
         """Testing that the json string gets converted into a list"""
-        list_input = [
-            {'id': 2089, 'size': 10},
-            {'id': 2712, 'size': 7}]
+        list_input = [{"id": 2089, "size": 10}, {"id": 2712, "size": 7}]
         json_list_input = Square.to_json_string(list_input)
         list_output = Square.from_json_string(json_list_input)
-        s1 = {'id': 2089, 'size': 10}
-        s2 = {'size': 7, 'id': 2712}
+        s1 = {"id": 2089, "size": 10}
+        s2 = {"size": 7, "id": 2712}
         self.assertEqual(list_input[0], s1)
         self.assertEqual(list_input[1], s2)
 
@@ -293,7 +281,7 @@ class test_square(unittest.TestCase):
 
     def test_load_from_file_not_the_same(self):
         """Checking that an object was created from the
-            list but has a different adress."""
+        list but has a different adress."""
         r1 = Square(10)
         list_squares_input = [r1]
         Square.save_to_file(list_squares_input)
@@ -302,7 +290,7 @@ class test_square(unittest.TestCase):
 
     def test_load_from_file_same_width(self):
         """Checking that an object was created from the
-            list and has the same witdh"""
+        list and has the same witdh"""
         r1 = Square(10)
         list_squares_input = [r1]
         Square.save_to_file(list_squares_input)
@@ -311,7 +299,7 @@ class test_square(unittest.TestCase):
 
     def test_load_from_file_same_height(self):
         """Checking that an object was created from the
-            list and has the same height"""
+        list and has the same height"""
         r1 = Square(10)
         list_squares_input = [r1]
         Square.save_to_file(list_squares_input)
@@ -320,7 +308,7 @@ class test_square(unittest.TestCase):
 
     def test_load_from_file_same_x(self):
         """Checking that an object was created from the
-            list and has the same x"""
+        list and has the same x"""
         r1 = Square(10, 2, 8)
         list_squares_input = [r1]
         Square.save_to_file(list_squares_input)
@@ -329,7 +317,7 @@ class test_square(unittest.TestCase):
 
     def test_load_from_file_same_y(self):
         """Checking that an object was created from the
-            list and has the same y"""
+        list and has the same y"""
         r1 = Square(10, 2, 8)
         list_squares_input = [r1]
         Square.save_to_file(list_squares_input)
@@ -343,28 +331,28 @@ class test_square(unittest.TestCase):
         r1 = Square(10)
         r1.display()
         sys.stdout = sys.__stdout__
-        output = ("##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n")
+        output = (
+            "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+        )
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_one(self):
         """Checking the stdout output by capturing it"""
-
         capturedOutput = StringIO()
         sys.stdout = capturedOutput
         r1 = Square(1)
         r1.display()
         sys.stdout = sys.__stdout__
-
-        output = ("#\n")
+        output = "#\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_zero(self):
@@ -374,8 +362,7 @@ class test_square(unittest.TestCase):
         r1 = Square(3)
         r1.display()
         sys.stdout = sys.__stdout__
-
-        output = '###\n###\n###\n'
+        output = "###\n###\n###\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square(self):
@@ -385,16 +372,18 @@ class test_square(unittest.TestCase):
         r1 = Square(10)
         r1.display()
         sys.stdout = sys.__stdout__
-        output = ("##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n" +
-                  "##########\n")
+        output = (
+            "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+            + "##########\n"
+        )
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_one(self):
@@ -404,15 +393,15 @@ class test_square(unittest.TestCase):
         r1 = Square(1)
         r1.display()
         sys.stdout = sys.__stdout__
-        output = ("#\n")
+        output = "#\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_zero(self):
-        """ Checking the stdout output by capturing it """
+        """Checking the stdout output by capturing it"""
         capturedOutput = StringIO()
         sys.stdout = capturedOutput
         r1 = Square(3)
         r1.display()
         sys.stdout = sys.__stdout__
-        output = '###\n###\n###\n'
+        output = "###\n###\n###\n"
         self.assertEqual(capturedOutput.getvalue(), output)
