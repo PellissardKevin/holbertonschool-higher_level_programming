@@ -79,3 +79,6 @@ class test_base(unittest.TestCase):
         json_dict = sq.to_dictionary()
         json_string = Base.to_json_string([])
         self.assertEqual(json_string, "[]")
+
+if __name__ == '__main__':
+    unittest.main()
