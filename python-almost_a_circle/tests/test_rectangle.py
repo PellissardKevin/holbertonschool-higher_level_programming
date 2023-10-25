@@ -210,7 +210,8 @@ class test_rectangle(unittest.TestCase):
         """Testing the dict that will be printed"""
         r1 = Rectangle(5, 4, 0, 0, 400)
         r1_dict = r1.to_dictionary()
-        self.assertEqual(r1_dict, {"height": 4, "id": 400, "width": 5, "x": 0, "y": 0})
+        self.assertEqual(r1_dict,
+        {"width": 5, "height": 4, "x": 0, "y": 0, "id": 400})
 
     def test_missing_height(self):
         """Expecting a type error because height and width are missing"""
@@ -232,7 +233,7 @@ class test_rectangle(unittest.TestCase):
         Rectangle.save_to_file([r1])
         with open("Rectangle.json", "r") as file:
             content = file.read()
-        t = [{"x": 0, "y": 0, "id": 346, "height": 10, "width": 5}]
+        t = [{"width": 5, "height": 10, "x": 0, "y": 0, "id": 346}]
         self.assertEqual(t, json.loads(content))
 
     def test_saving_to_file_no_iter(self):
@@ -276,7 +277,7 @@ class test_rectangle(unittest.TestCase):
         ]
         json_list_input = Rectangle.to_json_string(list_input)
         list_output = Rectangle.from_json_string(json_list_input)
-        self.assertEqual(type(list_input), list)
+        self.assertEqual(type(list_output), list)
 
     def test_json_string(self):
         """Testing that the json string gets converted into a list"""
@@ -288,8 +289,8 @@ class test_rectangle(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         s1 = {"id": 2089, "width": 10, "height": 4}
         s2 = {"height": 7, "id": 2712, "width": 1}
-        self.assertEqual(list_input[0], s1)
-        self.assertEqual(list_input[1], s2)
+        self.assertEqual(list_output[0], s1)
+        self.assertEqual(list_output[1], s2)
 
     def test_dict_to_instance(self):
         """test that an instance is created from a dict"""
