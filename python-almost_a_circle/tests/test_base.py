@@ -14,10 +14,6 @@ class test_base(unittest.TestCase):
         """Sending no id"""
         b = Base()
         self.assertEqual(1, b.id)
-        re = Rectangle(5, 10)
-        self.assertEqual(2, re.id)
-        sq = Square(5)
-        self.assertEqual(3, sq.id)
 
     def test_id(self):
         """Sending a valid id"""

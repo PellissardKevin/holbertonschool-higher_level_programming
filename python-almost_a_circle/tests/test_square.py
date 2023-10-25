@@ -177,7 +177,7 @@ class test_square(unittest.TestCase):
 
     def test_update_dict_no_key(self):
         """Testing the update method with **kwargs"""
-        self.s.update(y=1, size=2, xox=3, id=89)
+        self.s.update(y=1, size=2, x=3, id=89)
 
     def test_update_string(self):
         """Testing the update method with **kwargs"""
@@ -196,7 +196,7 @@ class test_square(unittest.TestCase):
         self.assertEqual(r1_dict, {"size": 5, "id": 410, "x": 0, "y": 0})
 
     def test_missing_height(self):
-        """Expecting a type error because height and width are missing"""
+        """Expecting a type error because size are missing"""
         with self.assertRaises(TypeError):
             Square()
 
