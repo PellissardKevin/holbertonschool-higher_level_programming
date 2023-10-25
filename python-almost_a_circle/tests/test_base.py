@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import unittest, json
 from models.base import Base
-from models.rectange import Rectangle
+from models.rectangle import Rectangle
 from models.square import Square
 
 """Creating test cases for the base module"""
@@ -14,9 +14,9 @@ class test_base(unittest.TestCase):
         """Sending no id"""
         b = Base()
         self.assertEqual(1, b.id)
-        re = Rectangle()
+        re = Rectangle(5, 10)
         self.assertEqual(2, re.id)
-        sq = Square()
+        sq = Square(5)
         self.assertEqual(3, sq.id)
 
     def test_id(self):
