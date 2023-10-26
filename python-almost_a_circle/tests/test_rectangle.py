@@ -226,6 +226,12 @@ class test_rectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(1)
 
+    def test_str_representation(self):
+        """ Testing string rep """
+        rect = Rectangle(5, 4, 1, 2, 42)
+        expected_str = "[Rectangle] (42) 1/2 - 5/4"
+        self.assertEqual(str(rect), expected_str)
+
     def test_saving_to_file(self):
         """Testing saving a file into json format"""
         try:
