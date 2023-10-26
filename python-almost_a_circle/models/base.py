@@ -12,15 +12,13 @@ class Base:
         if id is not None:
             self.id = id
         else:
-            self.__class__.__nb_objects += 1
-            self.id = self.__class__.__nb_objects
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
         """returns JSON string"""
-        if list_dictionaries is None or len(list_dictionaries) == 0:
-            return '[]'
-        return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries or '[]')
 
     @classmethod
     def save_to_file(cls, list_objs):
