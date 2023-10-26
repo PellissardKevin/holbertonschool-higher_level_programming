@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import unittest, os, json, sys
-from models.rectangle import Rectangle
+from models.rectangle import Rectangle, Base
 from io import StringIO
 """Runs test cases for the Rectangle module"""
 
@@ -16,6 +16,10 @@ class test_rectangle(unittest.TestCase):
     def tearDown(self):
         """Deleting created instance"""
         del self.r
+
+    def test_rectangle_inherits_from_base(self):
+        """ Testing inheritance """
+        self.assertTrue(issubclass(Rectangle, Base))
 
     def test_width(self):
         """Testing the Rectangle width getter"""

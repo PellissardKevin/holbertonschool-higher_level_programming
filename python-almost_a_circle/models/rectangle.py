@@ -6,7 +6,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """ Class Rectangle inherit Base"""
+    """Class Rectangle inherit Base"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -79,19 +79,23 @@ class Rectangle(Base):
     def display(self):
         """Print with #"""
         print("{}".format("\n" * self.__y), end="")
-        print("{}".format("\n".join([
-                " " * self.__x + "#" * self.__width] * self.__height)))
+        print(
+            "{}".format(
+                "\n".join([" " * self.__x + "#" * self.__width] * self.__height)
+            )
+        )
 
     def __str__(self):
         """definition of str for print"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
-            self.id, self.__x, self.__y, self.__width, self.__height)
+            self.id, self.__x, self.__y, self.__width, self.__height
+        )
 
     def update(self, *args, **kwargs):
         """Definition update with variadic function"""
         if args:
             i = 0
-            listme = ['id', 'width', 'height', 'x', 'y']
+            listme = ["id", "width", "height", "x", "y"]
             for arg in args:
                 setattr(self, listme[i], arg)
                 i += 1
@@ -102,5 +106,10 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """return dict representation of Rectangle"""
-        return {'x': self.x, 'y': self.y, 'id': self.id,
-                'height': self.height, 'width': self.width}
+        return {
+            "x": self.x,
+            "y": self.y,
+            "id": self.id,
+            "height": self.height,
+            "width": self.width,
+        }
