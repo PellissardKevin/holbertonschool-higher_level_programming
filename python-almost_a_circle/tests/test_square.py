@@ -21,6 +21,10 @@ class test_square(unittest.TestCase):
             pass
         del self.s
 
+    def test_square_inherits_from_base(self):
+        """ Testing inheritance """
+        self.assertTrue(issubclass(Square, Base))
+
     def test_width(self):
         """Testing the square width getter"""
         self.assertEqual(5, self.s.width)
