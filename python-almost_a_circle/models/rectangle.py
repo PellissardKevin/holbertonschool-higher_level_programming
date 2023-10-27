@@ -80,10 +80,8 @@ class Rectangle(Base):
         """Print with #"""
         print("{}".format("\n" * self.__y), end="")
         print(
-            "{}".format(
-                "\n".join([" " * self.__x + "#" * self.__width] * self.__height)
-            )
-        )
+            "{}".format("\n".join(
+                [" " * self.__x + "#" * self.__width] * self.__height)))
 
     def __str__(self):
         """definition of str for print"""
