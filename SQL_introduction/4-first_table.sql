@@ -1,7 +1,5 @@
-CREATE DATABASE hbtn_0c_0 IF NOT EXISTS;
-USE hbtn_0c_0;
-CREATE TABLES first_table IF NOT EXISTS
+CREATE TABLE IF NOT EXISTS first_table
 (
-	id INT;
-	name VARCHAR(256);
-)
+	id INT,
+	name VARCHAR(256)
+);
