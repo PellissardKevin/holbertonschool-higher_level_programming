@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module listing all cities from the database"""
 import MySQLdb
 from sys import argv
 
