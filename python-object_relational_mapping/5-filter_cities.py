@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module listing all cities from the state passed in argument"""
 import MySQLdb
 from sys import argv
 
